@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Tag
+
+<h2>Are you sure you want to delete @Model.Title?</h2>
+<h4 class="light-text">You cannot undo this.</h4><br />
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Tags", "Index")</p>
+</div>

@@ -1,0 +1,42 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Recipe
+
+
+<h2>Add a New Recipe</h2>
+
+<p>@Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Ingredients, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+<div class="form">
+@using (Html.BeginForm())
+{
+    <div class="form-block">
+      @Html.LabelFor(model => model.Name)
+      @Html.TextBoxFor(model => model.Name)
+    </div>
+      <div class="form-block">
+      @Html.LabelFor(model => model.Ingredients)
+      @Html.TextAreaFor(model => model.Ingredients, new { @class = "textbox" })
+    </div>
+    <div class="form-block">
+      @Html.LabelFor(model => model.Instructions)
+      @Html.TextAreaFor(model => model.Instructions, new { @class = "textbox" })
+    </div>
+    <div class="form-block">
+  @Html.LabelFor(model => model.Category)
+  @Html.DropDownList("CategoryId")
+   </div>
+<div class="form-block">
+  <input type="submit" value="Add Recipe" class="btn btn-default" />
+   </div>
+}
+</div>
+
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Recipes", "Index")</p>
+</div>

@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Category
+<h2>Add a new category</h2>
+
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+</p>
+
+<div class="form">
+  @using (Html.BeginForm())
+  {
+    <div class="form-block">
+      @Html.LabelFor(model => model.Name)
+      @Html.TextBoxFor(model => model.Name)
+    </div>
+    <div class="form-block">
+      <input type="submit" value="Add Category" />
+    </div>
+  }
+</div>
+
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Categories", "Index")</p>
+</div>

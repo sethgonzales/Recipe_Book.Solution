@@ -4,45 +4,59 @@
 
 @using RecipeBook.Models;
 
-<h1>Welcome to the Recipe Book</h1>
+<h2>Welcome</h2>
 
-<hr>
+<div class="splash-container">
 
-<h4>Categories</h4>
-@if (Model["categories"].Length == 0)
-{
-  <p>No categories have been added yet!</p>
-} 
-<ul>
-  @foreach (Category cat in Model["categories"])
+
+  @using (Html.BeginForm("Index", "Categories", FormMethod.Get)) //make sure the form triggers a get request
   {
-    <li>@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId})</li>
+    <button type="submit" class="navlinks-home">@Html.ActionLink("Categories", "Index", "Categories")</button>
   }
-</ul>
-
-@if (User.Identity.IsAuthenticated)
-{
-  <h4>Recipes for @User.Identity.Name</h4>
-  @if (Model["recipes"].Length == 0)
+  <hr />
+  @if (Model["categories"].Length == 0)
   {
-    <p>No recipes have been added yet!</p>
-  } 
-  <ul>
-    @foreach (Recipe recipe in Model["recipes"])
+    <p>No categories have been added yet!</p>
+  }
+  else
+  {
+    <ul>
+      @foreach (Category cat in Model["categories"])
+      {
+        <li class="lists">@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId })</li>
+      }
+    </ul>
+  }
+</div>
+<div class="splash-container">
+  @if (User.Identity.IsAuthenticated)
+  {
     {
-      <li>@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId})</li>
+      <button type="submit" class="navlinks-home">@Html.ActionLink("Recipes", "Index", "Recipes")</button>
     }
-  </ul>
-}
-else
-{
-  <h4>Recipes</h4>
-  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your recipes.</p>
-}
+    <hr />
+    <h4>Recipes for @User.Identity.Name</h4>
+    @if (Model["recipes"].Length == 0)
+    {
+      <p>No recipes have been added yet!</p>
+    }
+    <ul>
+      @foreach (Recipe recipe in Model["recipes"])
+      {
+        <li class="lists">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</li>
+      }
+    </ul>
+  }
+  else
+  {
+    <h4>Recipes</h4>
+    <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your recipes.</p>
+  }
+</div>
 
-<hr>
-
-<p>@Html.ActionLink("Manage recipes", "Index", "Recipes")</p> 
-<p>@Html.ActionLink("Manage categories", "Index", "Categories")</p>
-<p>@Html.ActionLink("Manage tags", "Index", "Tags")</p>
-<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
+<div class="navlinks four-links">
+  <p>@Html.ActionLink("Manage Recipes", "Index", "Recipes")</p>
+  <p>@Html.ActionLink("Manage Categories", "Index", "Categories")</p>
+  <p>@Html.ActionLink("Manage Tags", "Index", "Tags")</p>
+  <p>@Html.ActionLink("Create or Manage an Account", "Index", "Account")</p>
+</div>

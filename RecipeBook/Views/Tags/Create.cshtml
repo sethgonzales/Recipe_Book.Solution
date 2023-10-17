@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Tag
+
+<h2>Add a New Tag</h2>
+
+<p>@Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger", @style = "font-weight: 600;" })
+</p>
+
+<div class="form">
+  @using (Html.BeginForm())
+  {
+    <div class="form-block">
+      @Html.LabelFor(model => model.Title)
+      @Html.TextBoxFor(model => model.Title)
+    </div>
+    <div class="form-block">
+      <input type="submit" value="Add new tag" class="btn btn-default" />
+    </div>
+  }
+</div>
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all tags", "Index")</p>
+</div>

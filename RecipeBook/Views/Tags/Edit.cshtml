@@ -1,0 +1,22 @@
+@model RecipeBook.Models.Tag
+
+<h2>Edit Details for @Model.Title</h2><br />
+
+<div class="form">
+  @using (Html.BeginForm())
+  {
+    @Html.HiddenFor(model => model.TagId)
+
+    <div class="form-block">
+      @Html.LabelFor(model => model.Title)
+      @Html.EditorFor(model => model.Title)
+    </div>
+    <div class="form-block">
+      <input type="submit" value="Save" />
+    </div>
+  }
+</div>
+
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Tags", "Index")</p>
+</div>

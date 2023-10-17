@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecipeBook.Models.Category
+
+<h2>Are you sure you want to delete @Model.Name?</h2>
+<h4 class="light-text">You cannot undo this.</h4><br />
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Categories", "Index")</p>
+</div>
