@@ -22,20 +22,11 @@ namespace RecipeBook
                           )
                         )
                       );
-      
+
+      // New code below!!
       builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<RecipeBookContext>()
                 .AddDefaultTokenProviders();
-
-      // builder.Services.Configure<IdentityOptions>(options =>
-      // {
-      //   options.Password.RequireDigit = false;
-      //   options.Password.RequireLowercase = false;
-      //   options.Password.RequireNonAlphanumeric = false;
-      //   options.Password.RequireUppercase = false;
-      //   options.Password.RequiredLength = 0;
-      //   options.Password.RequiredUniqueChars = 0;
-      // });
 
       WebApplication app = builder.Build();
 
@@ -45,6 +36,7 @@ namespace RecipeBook
 
       app.UseRouting();
 
+      // New code below!
       app.UseAuthentication(); 
       app.UseAuthorization();
 
