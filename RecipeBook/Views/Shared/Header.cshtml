@@ -15,6 +15,11 @@
     <button type="submit" class="header-link">@Html.ActionLink("Recipes", "Index", "Recipes")</button>
   }
 
+   @using (Html.BeginForm("Index", "Account", FormMethod.Get)) //make sure the form triggers a get request
+  {
+    <button type="submit" class="header-link">@Html.ActionLink("Account", "Index", "Account")</button>
+  }
+
   @using (Html.BeginForm("Search", "Recipes"))
   {
     @Html.TextBox("searchRecipes", null, new { placeholder = "Search by Name or Ingredient" })
