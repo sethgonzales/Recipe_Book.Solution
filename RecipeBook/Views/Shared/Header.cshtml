@@ -1,31 +1,41 @@
-<nav id="header" class="navbar">
-<a class="navbar-brand" href="/">
-<h1> Dr. SillyStringz's Engineering Co. </h1>
-</a>
-@Html.ActionLink("Home", "Index", "Home")
-@Html.ActionLink("Categories", "Index", "Categories")
-@Html.ActionLink("Recipes", "Index", "Recipes")
-@using (Html.BeginForm("Search", "Recipes"))
-{
-@Html.TextBox("searchRecipes", null, new { placeholder = "Search by Name or Ingredient" })
-<button type="submit">Search</button>
-}
-</nav><br /><br /><br /><br /><br />
-@* 
+<div id="header" class="navbar">
+  <a class="navbar-brand" href="/">
+    <h1> Recipe Book </h1>
+  </a>
+  @using (Html.BeginForm("Index", "Home", FormMethod.Get)) //make sure the form triggers a get request
+  {
+    <button type="submit" class="header-link">@Html.ActionLink("Home", "Index", "Home")</button>
+  }
+ @using (Html.BeginForm("Index", "Categories", FormMethod.Get)) //make sure the form triggers a get request
+  {
+    <button type="submit" class="header-link">@Html.ActionLink("Categories", "Index", "Categories")</button>
+  }
+ @using (Html.BeginForm("Index", "Recipes", FormMethod.Get)) //make sure the form triggers a get request
+  {
+    <button type="submit" class="header-link">@Html.ActionLink("Recipes", "Index", "Recipes")</button>
+  }
+
+  @using (Html.BeginForm("Search", "Recipes"))
+  {
+    @Html.TextBox("searchRecipes", null, new { placeholder = "Search by Name or Ingredient" })
+    <button type="submit">Search</button>
+  }
+</div><br /><br /><br /><br /><br />
+@*
 
 <div class="navbar">
-  <a class="navbar-brand" href="/">
-    <h1> Recipe Book</h1>
-  </a>
-  <div class="dropdown">
-    <button class="dropbtn">Dropdown
-      <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-content">
-      <a href="/">Home</a>
-      <a href="#">Categories</a>
-      <a href="#">Recipes</a>
-      <a href="#">Account</a>
-    </div>
-  </div>
+<a class="navbar-brand" href="/">
+<h1> Recipe Book</h1>
+</a>
+<div class="dropdown">
+<button class="dropbtn">Dropdown
+<i class="fa fa-caret-down"></i>
+</button>
+<div class="dropdown-content">
+<a href="/">Home</a>
+<a href="#">Categories</a>
+<a href="#">Recipes</a>
+<a href="#">Account</a>
+</div>
+</div>
 </div> *@

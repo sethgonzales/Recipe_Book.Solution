@@ -65,6 +65,7 @@ namespace RecipeBook.Controllers
       return View(thisRecipe);
     }
 
+    // [Authorize(Roles = "Administrator, Editor")]
     public ActionResult Edit(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
@@ -95,7 +96,7 @@ namespace RecipeBook.Controllers
       return RedirectToAction("Index");
     }
 
-        public ActionResult AddTag(int id)
+    public ActionResult AddTag(int id)
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Title");
@@ -105,16 +106,16 @@ namespace RecipeBook.Controllers
     [HttpPost]
     public ActionResult AddTag(Recipe recipe, int tagId)
     {
-      #nullable enable
+#nullable enable
       RecipeTag? joinEntity = _db.RecipeTags.FirstOrDefault(join => (join.TagId == tagId && join.RecipeId == recipe.RecipeId));
-      #nullable disable
+#nullable disable
       if (joinEntity == null && tagId != 0)
       {
         _db.RecipeTags.Add(new RecipeTag() { TagId = tagId, RecipeId = recipe.RecipeId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = recipe.RecipeId });
-    }   
+    }
 
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
@@ -123,7 +124,7 @@ namespace RecipeBook.Controllers
       _db.RecipeTags.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
-    } 
+    }
 
     public ActionResult Search(string searchRecipes)
     {
