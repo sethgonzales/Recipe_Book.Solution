@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace RecipeBook.Controllers
 {
@@ -58,7 +59,7 @@ namespace RecipeBook.Controllers
         return RedirectToAction("Index");
       }
     }
-
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Recipe thisRecipe = _db.Recipes.Include(recipe => recipe.Category).Include(recipe => recipe.JoinEntities).ThenInclude(join => join.Tag).FirstOrDefault(recipe => recipe.RecipeId == id);
@@ -70,16 +71,32 @@ namespace RecipeBook.Controllers
     {
       Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-      return View(thisRecipe);
+      if (User.IsInRole("Admin") || thisRecipe.User.Id == _userManager.GetUserId(User))
+      {
+        return View(thisRecipe);
+      }
+      else
+      {
+        return View("Unauthorized");
+      }
+
     }
 
     [HttpPost]
     public ActionResult Edit(Recipe recipe)
     {
-      _db.Recipes.Update(recipe);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      if (User.IsInRole("Admin") || recipe.User.Id == _userManager.GetUserId(User))
+      {
+        _db.Recipes.Update(recipe);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
+      else
+      {
+        return View("Unauthorized");
+      }
     }
+
 
     public ActionResult Delete(int id)
     {
@@ -98,24 +115,22 @@ namespace RecipeBook.Controllers
 
     public ActionResult AddTag(int id)
     {
-      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipes => recipes.RecipeId == id);
+      Recipe thisRecipe = _db.Recipes.FirstOrDefault(recipe => recipe.RecipeId == id);
       ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Title");
       return View(thisRecipe);
     }
 
     [HttpPost]
-    public ActionResult AddTag(Recipe recipe, int tagId)
+    public ActionResult AddTag(Recipe recipe, int TagId)
     {
-#nullable enable
-      RecipeTag? joinEntity = _db.RecipeTags.FirstOrDefault(join => (join.TagId == tagId && join.RecipeId == recipe.RecipeId));
-#nullable disable
-      if (joinEntity == null && tagId != 0)
+      if (TagId != 0)
       {
-        _db.RecipeTags.Add(new RecipeTag() { TagId = tagId, RecipeId = recipe.RecipeId });
+        _db.RecipeTags.Add(new RecipeTag() { TagId = TagId, RecipeId = recipe.RecipeId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = recipe.RecipeId });
     }
+
 
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)

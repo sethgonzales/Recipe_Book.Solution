@@ -3,55 +3,47 @@
 }
 
 @using RecipeBook.Models;
+@using System.Collections.Generic;
 
-<h2>Welcome</h2>
+<h2>Popular Recipes</h2>
+@foreach (Recipe recipe in Model)
+{
+  <div class=recipe-box>
+  <h5 class="recipe-name">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</h5>
+    <p class="recipe-tags">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</p>
+  </div>
+}
+<hr />
 
 <div class="splash-container">
-
-
-  @using (Html.BeginForm("Index", "Categories", FormMethod.Get)) //make sure the form triggers a get request
+  @using (Html.BeginForm("Index", "Recipes", FormMethod.Get))
   {
-    <button type="submit" class="navlinks-home">@Html.ActionLink("Categories", "Index", "Categories")</button>
-  }
-  <hr />
-  @if (Model["categories"].Length == 0)
-  {
-    <p>No categories have been added yet!</p>
-  }
-  else
-  {
-    <ul>
-      @foreach (Category cat in Model["categories"])
-      {
-        <li class="lists">@Html.ActionLink(@cat.Name, "Details", "Categories", new { id = @cat.CategoryId })</li>
-      }
-    </ul>
-  }
-</div>
-<div class="splash-container">
+    <button type="submit" class="navlinks-home">@Html.ActionLink("My Recipes", "Index", "Recipes")</button>
+  }<br />
   @if (User.Identity.IsAuthenticated)
   {
-    {
-      <button type="submit" class="navlinks-home">@Html.ActionLink("Recipes", "Index", "Recipes")</button>
-    }
-    <hr />
     <h4>Recipes for @User.Identity.Name</h4>
-    @if (Model["recipes"].Length == 0)
-    {
-      <p>No recipes have been added yet!</p>
-    }
+
     <ul>
-      @foreach (Recipe recipe in Model["recipes"])
-      {
-        <li class="lists">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</li>
+      @{
+        int count = 0;
+        foreach (Recipe recipe in Model)
+        {
+          if (recipe.User.UserName == User.Identity.Name)
+          {
+            <li class="lists">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</li>
+            count++;
+          }
+        }
+        if (count == 0)
+        {
+          <p>You don't have any recipes added yet!</p>
+        }
       }
     </ul>
   }
   else
   {
-    <h4>Recipes</h4>
     <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your recipes.</p>
   }
 </div>
-
-

@@ -1,46 +1,36 @@
-<div id="header" class="navbar">
-  <a class="navbar-brand" href="/">
-    <h1> Recipe Book </h1>
+<div class="header bar">
+  <a href="/">
+    <h3 class="floatLeft title">bone applè tea</h3>
   </a>
-  @using (Html.BeginForm("Index", "Home", FormMethod.Get)) //make sure the form triggers a get request
-  {
-    <button type="submit" class="header-link">@Html.ActionLink("Home", "Index", "Home")</button>
-  }
- @using (Html.BeginForm("Index", "Categories", FormMethod.Get)) //make sure the form triggers a get request
-  {
-    <button type="submit" class="header-link">@Html.ActionLink("Categories", "Index", "Categories")</button>
-  }
- @using (Html.BeginForm("Index", "Recipes", FormMethod.Get)) //make sure the form triggers a get request
-  {
-    <button type="submit" class="header-link">@Html.ActionLink("Recipes", "Index", "Recipes")</button>
-  }
-
-   @using (Html.BeginForm("Index", "Account", FormMethod.Get)) //make sure the form triggers a get request
-  {
-    <button type="submit" class="header-link">@Html.ActionLink("Account", "Index", "Account")</button>
-  }
-
-  @using (Html.BeginForm("Search", "Recipes"))
-  {
-    @Html.TextBox("searchRecipes", null, new { placeholder = "Search by Name or Ingredient" })
-    <button type="submit">Search</button>
-  }
-</div><br /><br /><br /><br /><br />
-@*
-
-<div class="navbar">
-<a class="navbar-brand" href="/">
-<h1> Recipe Book</h1>
-</a>
-<div class="dropdown">
-<button class="dropbtn">Dropdown
-<i class="fa fa-caret-down"></i>
-</button>
-<div class="dropdown-content">
-<a href="/">Home</a>
-<a href="#">Categories</a>
-<a href="#">Recipes</a>
-<a href="#">Account</a>
+  <label class="floatLeft label" for="navBtn"><span></span></label>
+  <span class="searchbar">
+    @using (Html.BeginForm("Search", "Recipes"))
+    {
+      @Html.TextBox("searchRecipes", null, new { placeholder = "Search Recipes" })
+      <button type="submit">Search</button>
+    }
+  </span>
 </div>
+<div class="menu">
+
+  <input type="checkbox" class="navBtn" id="navBtn" />
+  <nav>
+    <ul>
+      <li>
+        <a href="/"><i class="fa fa-home"></i>Home</a>
+      </li>
+      <li>
+        <a href="/categories"><i class="fa fa-book"></i>Cuisines</a>
+      </li>
+      <li>
+        <a href="/recipes"><i class="fa fa-cutlery"></i>My Recipes</a>
+      </li>
+      <li>
+        <a href="/tags"><i class="fa fa-tag"></i>Tags</a>
+      </li>
+      <li>
+        <a href="/account"><i class="fa fa-user"></i>Account</a>
+      </li>
+    </ul>
+  </nav>
 </div>
-</div> *@

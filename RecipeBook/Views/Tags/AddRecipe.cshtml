@@ -12,14 +12,14 @@
     @Html.HiddenFor(model => model.TagId)
     <div class="form-block">
       @Html.Label("Select recipe")
-      @Html.DropDownList("RecipeId")
+      @Html.DropDownList("RecipeId", (SelectList)ViewBag.RecipeId)
     </div>
     <div class="form-block">
-      <input type="submit" value="Add Machine" />
+      <input type="submit" class="btn btn-outline-dark" value="Save" />
     </div>
   }
 </div>
-<div class="navlinks">
 
-<p>@Html.ActionLink("Show all Tags", "Index")</p>
+<div class="navlinks">
+  <p>@Html.ActionLink("Show all Tags", "Index")</p>
 </div>

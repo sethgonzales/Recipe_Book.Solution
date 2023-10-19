@@ -6,7 +6,7 @@
 @using RecipeBook.Models;
 @using System.Collections.Generic;
 
-<h2>@Model.Name Details</h2>
+<h2>@Model.Name Cuisine Details</h2>
 
 
 @if (@Model.Recipes.Count == 0)
@@ -15,7 +15,7 @@
 }
 else
 {
-  <h4>@Model.Name Recipes</h4>
+  <h4>Recipes</h4>
   <ul>
   @foreach (Recipe recipe in Model.Recipes)
     {
@@ -33,12 +33,12 @@ else
         }
         tags = String.Join(", ", tagList);
       }
-      <li class="lists">@recipe.Name | Tags: @tags</li>
+      <li class="lists"> @Html.ActionLink($"{recipe.Name}", "Details","Recipes", new { id = recipe.RecipeId }) | Tags: @tags</li>
     }
   </ul>
 }
 <div class="navlinks four-links">
-  <p>@Html.ActionLink("Show all Categories", "Index")</p>
+  <p>@Html.ActionLink("All Categories", "Index")</p>
   <p>@Html.ActionLink("Edit Category", "Edit", new { id = Model.CategoryId })</p>
   <p>@Html.ActionLink("Delete Category", "Delete", new { id = Model.CategoryId })</p>
   <p>@Html.ActionLink("Add New Recipe", "Create", "Recipes")</p>

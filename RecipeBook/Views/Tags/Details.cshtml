@@ -5,7 +5,7 @@
 @using RecipeBook.Models
 @model RecipeBook.Models.Tag
 
-<h2>@Model.Title Details: <span class="light-text">Machine</span></h2>
+<h2>@Model.Title: <span class="light-text">Tag Details</span></h2>
 
 @if (@Model.JoinEntities.Count == 0)
 {
@@ -21,7 +21,7 @@ else
       @using (Html.BeginForm("DeleteJoin", "Tags"))
       {
         @Html.Hidden("joinId", @join.RecipeTagId)
-        <input type="submit" value="Delete" />
+        <input type="submit" class="btn btn-outline-dark" value="Delete" />
       }
     }
   </ul>

@@ -1,20 +1,25 @@
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 @using Microsoft.AspNetCore.Identity;
 @model string
 @{
     ViewData["Title"] = "CREATE ROLE";
 }
-  
-<h1 class="bg-info text-white">Create a Role</h1>
-<a asp-action="Index" class="btn btn-secondary">Back</a>
+
+<h2>Create a Role</h2>
 <div asp-validation-summary="All" class="text-danger"></div>
-  
+
 <form asp-action="Create" method="post">
     <div class="form-group">
         <label for="name">Name:</label>
         <input name="name" class="form-control" />
+    </div><br />
+    <div class="form-group">
+        <input type="submit" class="btn btn-outline-dark"></input>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
 </form>
+
+<div class="navlinks">
+    <p>@Html.ActionLink("See All Roles", "Index")</p>
+</div>

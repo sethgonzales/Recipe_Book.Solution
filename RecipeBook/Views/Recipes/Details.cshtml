@@ -5,9 +5,9 @@
 @using RecipeBook.Models
 @model RecipeBook.Models.Recipe
 
-<h2>@Model.Name Recipe Details</h2>
-      <p>Ingredients: @Model.Ingredients</p>
-      <p>Instructions: @Model.Instructions</p>
+<h2>@Model.Name</h2>
+<p>Ingredients: @Model.Ingredients</p>
+<p>Instructions: @Model.Instructions</p>
 @if (@Model.JoinEntities.Count == 0)
 {
   <p>@Model.Name does not have any tags yet!</p>
@@ -15,22 +15,31 @@
 else
 {
   <h4>This recipe has the following tags:</h4>
-  <ul>
-    @foreach(RecipeTag join in Model.JoinEntities)
+  @foreach (RecipeTag join in Model.JoinEntities)
+  {
+    <ul>
+  <li class="lists">Tag: @join.Tag.Title</li>
+    </ul>
+    @using (Html.BeginForm("DeleteJoin", "Recipes"))
     {
-      <li class="lists">Tag: @join.Tag.Title</li>
-      @using (Html.BeginForm("DeleteJoin", "Recipe"))
-      {
-        @Html.Hidden("joinId", @join.RecipeTagId)
-        <input type="submit" value="Delete"/>
-      }
+      @Html.Hidden("joinId", @join.RecipeTagId)
+      <input type="submit" class="btn btn-outline-dark" value="Delete" />
     }
-  </ul>
+  }
 }
 
-<div class="navlinks four-links">
-  <p>@Html.ActionLink("Show all Recipes", "Index")</p>
-  <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
-  <p>@Html.ActionLink("Add Tag for Recipe", "AddTag", new { id = Model.RecipeId })</p>
-  <p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
-</div>
+@if (@Model.User != null && User.Identity.Name == @Model.User.UserName || User.IsInRole("Admin"))
+{
+  <div class="navlinks four-links">
+  <p>@Html.ActionLink("My Recipes", "Index")</p>
+    <p>@Html.ActionLink("Edit Recipe", "Edit", new { id = Model.RecipeId })</p>
+    <p>@Html.ActionLink("Add Tag for Recipe", "AddTag", new { id = Model.RecipeId })</p>
+    <p>@Html.ActionLink("Delete Recipe", "Delete", new { id = Model.RecipeId })</p>
+  </div>
+}
+else
+{
+  <div class="navlinks">
+  <p>@Html.ActionLink("My Recipes", "Index")</p>
+  </div>
+}

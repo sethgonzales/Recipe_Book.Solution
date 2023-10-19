@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using RecipeBook.Models;
+using System.Linq;
 using System.Threading.Tasks;
 using RecipeBook.ViewModels;
-
+using System.Collections.Generic;
+using System.Security.Claims;
 namespace RecipeBook.Controllers
 {
   public class AccountController : Controller
@@ -12,17 +14,18 @@ namespace RecipeBook.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RecipeBookContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RecipeBookContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
       _db = db;
     }
-
     public ActionResult Index()
     {
       return View();
     }
+
+
 
     public IActionResult Register()
     {
@@ -30,7 +33,7 @@ namespace RecipeBook.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Register (RegisterViewModel model)
+    public async Task<ActionResult> Register(RegisterViewModel model)
     {
       if (!ModelState.IsValid)
       {
@@ -55,7 +58,7 @@ namespace RecipeBook.Controllers
       }
     }
 
-        public ActionResult Login()
+    public ActionResult Login()
     {
       return View();
     }

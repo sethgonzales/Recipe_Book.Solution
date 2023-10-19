@@ -12,14 +12,13 @@
 
     <div class="form-block">
       @Html.Label("Select tag")
-      @Html.DropDownList("TagId")
+      @Html.DropDownList("TagId", (SelectList)ViewBag.TagId)
     </div>
     <div class="form-block">
-      <input type="submit" value="Save" />
+      <input type="submit" class="btn btn-outline-dark" value="Save" />
     </div>
   }
 </div>
-
 <div class="navlinks">
-  <p>@Html.ActionLink("Show all Recipes", "Index")</p>
+  <p>@Html.ActionLink("My Recipes", "Index")</p>
 </div>

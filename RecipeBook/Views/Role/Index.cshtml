@@ -11,12 +11,7 @@
     ViewData["Title"] = "ROLES";
 }
 
-<h1 class="bg-info text-white">All Roles</h1>
-@using (Html.BeginForm("Create", "Role"))
-{
-    <button type="submit" class="btn btn-primary">Create a Role</button>
-}
-
+<h2>All Roles</h2>
 
 <table class="table table-sm table-bordered table-bordered">
     <tr>
@@ -32,10 +27,10 @@
             <td>@role.Id</td>
             <td>@role.Name</td>
             <td i-role="@role.Id"></td>
-            <td> 
+            <td>
                 @using (Html.BeginForm("Update", "Role", new { id = role.Id }, FormMethod.Get))
                 {
-                <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 }
             </td>
             <td>
@@ -48,3 +43,7 @@
         </tr>
     }
 </table>
+@using (Html.BeginForm("Create", "Role"))
+{
+    <button type="submit" class="btn btn-primary">Create a Role</button>
+}

@@ -3,7 +3,7 @@
 }
 
 @model RecipeBook.Models.Category
-<h2>Add a new category</h2>
+<h2>Add a new cuisine category</h2>
 
 <p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 </p>
@@ -12,15 +12,15 @@
   @using (Html.BeginForm())
   {
     <div class="form-block">
-      @Html.LabelFor(model => model.Name)
+      @Html.Label("model => model.Name")
       @Html.TextBoxFor(model => model.Name)
     </div>
     <div class="form-block">
-      <input type="submit" value="Add Category" />
+      <input type="submit" class="btn btn-outline-dark" value="Add Category" />
     </div>
   }
 </div>
 
 <div class="navlinks">
-  <p>@Html.ActionLink("Show all Categories", "Index")</p>
+  <p>@Html.ActionLink("All Categories", "Index")</p>
 </div>

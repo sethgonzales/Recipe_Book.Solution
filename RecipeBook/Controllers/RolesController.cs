@@ -6,12 +6,13 @@ using RecipeBook.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 // namespace Identity.Controllers
 namespace RecipeBook.Controllers
-
 {
+  [Authorize(Roles = "Admin")]
   public class RoleController : Controller
   {
     private RoleManager<IdentityRole> roleManager;

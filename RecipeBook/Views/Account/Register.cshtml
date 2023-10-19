@@ -6,26 +6,31 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
-<hr />
+<h2>Register New User</h2>
 
-@if(!ViewData.ModelState.IsValid) 
+@if (!ViewData.ModelState.IsValid)
 {
-  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
+  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:")
 }
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post))
 {
-  @Html.LabelFor(user => user.Email)
-  @Html.TextBoxFor(user=> user.Email)
-
-  @Html.LabelFor(user=> user.Password)
-  @Html.EditorFor(user=> user.Password)
-
-  @Html.LabelFor(user=> user.ConfirmPassword)
-  @Html.EditorFor(user=> user.ConfirmPassword)
-
-  <input type="submit" value="Register" />
+  <div class="form-block">
+    @Html.LabelFor(user => user.Email)
+    @Html.TextBoxFor(user => user.Email)
+  </div>
+  <div class="form-block">
+    @Html.LabelFor(user => user.Password)
+    @Html.EditorFor(user => user.Password)
+  </div>
+  <div class="form-block">
+    @Html.LabelFor(user => user.ConfirmPassword)
+    @Html.EditorFor(user => user.ConfirmPassword)
+  </div>
+  <div class="form-block">
+  <input type="submit" class="btn btn-outline-dark" value="Register" />
+</div>
 }
-
+<div class="navlinks">
 <p>@Html.ActionLink("Back to accounts page", "Index")</p>
+</div>

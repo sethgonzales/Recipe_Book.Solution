@@ -2,19 +2,38 @@
   Layout = "_Layout";
 }
 
-<h2>Authentication with Identity</h2>
+@using RecipeBook.Models
+
+<h2>Account Settings</h2>
 
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @User.Identity.Name!</p>
+  <h4>Welcome @User.Identity.Name</h4>
+
   @using (Html.BeginForm("LogOff", "Account"))
   {
-    <input type="submit" class="btn btn-default" value="Log out" />
+    <input type="submit" class="btn btn-outline-dark" value="Log out" />
+  }
+
+  @if (User.IsInRole("Admin"))
+  {
+    <div class="navlinks two-links">
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+      <p>@Html.ActionLink("Manage User Roles", "Index", "Role")</p>
+    </div>
+  }
+  else
+  {
+    <div class="navlinks">
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    </div>
   }
 }
 else
 {
-  <p>@Html.ActionLink("Register", "Register")</p>
-  <p>@Html.ActionLink("Log in", "Login")</p>
+  <div class="navlinks three-links">
+  <p>@Html.ActionLink("Home", "Index", "Home")</p>
+    <p>@Html.ActionLink("Log in", "Login")</p>
+    <p>@Html.ActionLink("Register", "Register")</p>
+  </div>
 }
-<p>@Html.ActionLink("Home", "Index", "Home")</p>

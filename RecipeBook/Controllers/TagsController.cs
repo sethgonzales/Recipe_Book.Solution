@@ -45,20 +45,18 @@ namespace RecipeBook.Controllers
 
     public ActionResult AddRecipe(int id)
     {
-      Tag thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
-      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Description");
+      Tag thisTag = _db.Tags.FirstOrDefault(tag => tag.TagId == id);
+      ViewBag.RecipeId = new SelectList(_db.Recipes, "RecipeId", "Name");
       return View(thisTag);
     }
 
+
     [HttpPost]
-    public ActionResult AddRecipe(Tag tag, int recipeId)
+    public ActionResult AddRecipe(Tag tag, int RecipeId)
     {
-      #nullable enable
-      RecipeTag? joinEntity = _db.RecipeTags.FirstOrDefault(join => (join.RecipeId == recipeId && join.TagId == tag.TagId));
-      #nullable disable
-      if (joinEntity == null && recipeId != 0)
+      if (RecipeId != 0)
       {
-        _db.RecipeTags.Add(new RecipeTag() { RecipeId = recipeId, TagId = tag.TagId });
+        _db.RecipeTags.Add(new RecipeTag() { RecipeId = RecipeId, TagId = tag.TagId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = tag.TagId });
