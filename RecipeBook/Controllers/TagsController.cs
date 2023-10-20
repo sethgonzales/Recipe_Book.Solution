@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RecipeBook.Controllers
 {
+  [Authorize]
   public class TagsController : Controller
   {
     private readonly RecipeBookContext _db;
@@ -16,11 +18,13 @@ namespace RecipeBook.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       return View(_db.Tags.ToList());
     }
-
+    
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Tag thisTag = _db.Tags

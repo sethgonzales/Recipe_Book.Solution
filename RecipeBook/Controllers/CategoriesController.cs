@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using RecipeBook.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace RecipeBook.Controllers
 {
+  [Authorize]
   public class CategoriesController : Controller
   {
     private readonly RecipeBookContext _db;
@@ -16,6 +18,7 @@ namespace RecipeBook.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Category> model = _db.Categories.ToList();
@@ -36,6 +39,8 @@ namespace RecipeBook.Controllers
 
 
     }
+    
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
       Category thisCategory = _db.Categories

@@ -88,7 +88,7 @@ body h2 {
 }
 
 .navlinks {
-  position: bottom;
+  position: relative;
 }
 
 .navlinks a {
@@ -174,11 +174,17 @@ input {
   padding: 5px;
   background-color: white;
   border-radius: 5px;
+  display: block;
 }
 
 .tags a{
   text-decoration: none;
   color: Black
+}
+
+.tags-container{  
+  display:inline-block;
+  width: 100%;
 }
 
 /* header and nav bar */
