@@ -6,6 +6,8 @@ body {
   font-family: optima, sans-serif;
   background-image: url(/../img/food.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 body h2 {
@@ -17,9 +19,9 @@ body h2 {
 .container-main {
   width: 50%;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 12%;
   margin-bottom: 2%;
-  margin-left: 10%;
+  margin-left: 25%;
   padding: 2%;
   float: left;
   background-color: rgba(255, 255, 255, 0.919);
@@ -34,11 +36,14 @@ body h2 {
 }
 
 .recipe-box {
-  border: solid black;
+  border: solid rgba(0, 0, 0, 0.248);
   float: left;
   width: 40%;
   height: 150px;
   margin: 5%;
+  margin-top: 2.5%;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .recipe-name {
@@ -46,7 +51,8 @@ body h2 {
   text-align: center;
   padding-top: 5px;
 }
-.recipe-name a{
+
+.recipe-name a {
   text-decoration: none;
   color: black;
   font-weight: bold;
@@ -74,12 +80,16 @@ body h2 {
   font-size: larger;
   text-decoration: none;
 }
+
 .navlinks-home:hover a {
   color: black;
   font-size: larger;
   text-decoration: none;
 }
 
+.navlinks {
+  position: bottom;
+}
 
 .navlinks a {
   color: rgb(72, 69, 71);
@@ -153,7 +163,32 @@ input {
   font-weight: lighter;
 }
 
+.tags {
+  border: solid rgba(0, 0, 0, 0.248);
+  float: left;
+  width: auto;
+  height: auto;
+  margin: 1%;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.tags a{
+  text-decoration: none;
+  color: Black
+}
+
 /* header and nav bar */
+.fixedtop {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+}
+
 .title {
   width: 100%;
   text-align: center;
@@ -175,14 +210,14 @@ input {
 }
 
 .searchbar input[type="text"] {
-  width:300px;
+  width: 300px;
   height: 35px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: ellipsis; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .searchbar button {
@@ -203,7 +238,9 @@ input {
   background-color: rgb(200, 200, 200);
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -237,7 +274,8 @@ i {
   float: right;
 }
 
-.label {  /*messing with labels in forms*/
+.label {
+  /*messing with labels in forms*/
   cursor: pointer;
   display: block;
   height: 4rem;
@@ -349,17 +387,21 @@ nav ul li:hover a i {
   color: black;
 }
 
-.navBtn:checked ~ nav {
+.navBtn:checked~nav {
   transform: translateX(0);
   transition: all 0.3s ease-out;
 }
 
-.navBtn:checked ~ nav ul li {
+.navBtn:checked~nav ul li {
   opacity: 1;
   transform: translateX(0);
   transition: all 0.6s ease-out;
 }
 
 .navBtn {
+  display: none;
+}
+
+.navBtn:not(:checked) + nav {
   display: none;
 }

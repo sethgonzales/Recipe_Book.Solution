@@ -1,36 +1,39 @@
-<div class="header bar">
-  <a href="/">
-    <h3 class="floatLeft title">bone applè tea</h3>
-  </a>
-  <label class="floatLeft label" for="navBtn"><span></span></label>
-  <span class="searchbar">
-    @using (Html.BeginForm("Search", "Recipes"))
-    {
-      @Html.TextBox("searchRecipes", null, new { placeholder = "Search Recipes" })
-      <button type="submit">Search</button>
-    }
-  </span>
-</div>
-<div class="menu">
+<div class="fixedtop">
 
-  <input type="checkbox" class="navBtn" id="navBtn" />
-  <nav>
-    <ul>
-      <li>
-        <a href="/"><i class="fa fa-home"></i>Home</a>
-      </li>
-      <li>
-        <a href="/categories"><i class="fa fa-book"></i>Cuisines</a>
-      </li>
-      <li>
-        <a href="/recipes"><i class="fa fa-cutlery"></i>My Recipes</a>
-      </li>
-      <li>
-        <a href="/tags"><i class="fa fa-tag"></i>Tags</a>
-      </li>
-      <li>
-        <a href="/account"><i class="fa fa-user"></i>Account</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="header bar">
+    <a href="/">
+      <h3 class="floatLeft title">bone applè tea</h3>
+    </a>
+    <label class="floatLeft label" for="navBtn"><span></span></label>
+    <span class="searchbar">
+      @using (Html.BeginForm("Search", "Recipes"))
+      {
+        @Html.TextBox("searchRecipes", null, new { placeholder = "Search Recipes" })
+        <button type="submit">Search</button>
+      }
+    </span>
+  </div>
+  <div class="menu">
+
+    <input type="checkbox" class="navBtn" id="navBtn" />
+    <nav>
+      <ul>
+        <li>
+          <a href="/"><i class="fa fa-home"></i>Home</a>
+        </li>
+        <li>
+          <a href="/categories"><i class="fa fa-book"></i>Cuisines</a>
+        </li>
+        <li>
+          <a href="/recipes"><i class="fa fa-cutlery"></i>My Recipes</a>
+        </li>
+        <li>
+          <a href="/tags"><i class="fa fa-tag"></i>Tags</a>
+        </li>
+        <li>
+          <a href="/account"><i class="fa fa-user"></i>Account</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>

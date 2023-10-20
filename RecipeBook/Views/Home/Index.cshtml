@@ -10,7 +10,7 @@
 {
   <div class=recipe-box>
   <h5 class="recipe-name">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</h5>
-    <p class="recipe-tags">@Html.ActionLink(@recipe.Name, "Details", "Recipes", new { id = @recipe.RecipeId })</p>
+    <p class="recipe-tags">Made with: @recipe.Ingredients </p>
   </div>
 }
 <hr />

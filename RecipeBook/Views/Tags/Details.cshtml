@@ -14,17 +14,18 @@
 else
 {
   <h4>Recipes the tag belongs to:</h4>
-  <ul>
   @foreach (RecipeTag join in Model.JoinEntities)
     {
+  <ul>
       <li class="lists">@join.Recipe.Name</li>
-      @using (Html.BeginForm("DeleteJoin", "Tags"))
+      @* @Html.ActionLink(@join.Recipe.Name, "Details", new {join.Recipe.Name.RecipeId }) *@
+  </ul>
+          @using (Html.BeginForm("DeleteJoin", "Tags"))
       {
         @Html.Hidden("joinId", @join.RecipeTagId)
         <input type="submit" class="btn btn-outline-dark" value="Delete" />
       }
     }
-  </ul>
 }
 
 <div class="navlinks four-links">
