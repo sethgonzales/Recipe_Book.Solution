@@ -15,17 +15,17 @@ else
 {
   <h4>Recipes the tag belongs to:</h4>
   @foreach (RecipeTag join in Model.JoinEntities)
-    {
-  <ul>
-      <li class="lists">@join.Recipe.Name</li>
+  {
+    <ul>
+  <li class="lists">@join.Recipe.Name</li>
       @* @Html.ActionLink(@join.Recipe.Name, "Details", new {join.Recipe.Name.RecipeId }) *@
-  </ul>
-          @using (Html.BeginForm("DeleteJoin", "Tags"))
-      {
-        @Html.Hidden("joinId", @join.RecipeTagId)
-        <input type="submit" class="btn btn-outline-dark" value="Delete" />
-      }
+    </ul>
+    @using (Html.BeginForm("DeleteJoin", "Tags"))
+    {
+      @Html.Hidden("joinId", @join.RecipeTagId)
+      <input type="submit" class="btn btn-outline-dark" value="Delete" />
     }
+  }
 }
 
 <div class="navlinks four-links">
