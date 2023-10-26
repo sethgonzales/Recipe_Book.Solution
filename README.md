@@ -20,6 +20,7 @@ This application organizes and builds a repository of Cuisine Categories, Recipe
   <img src="./RecipeBook/wwwroot/img/recipebook_schema.png" alt="overview of Recipe Book" width="80%">
 </p>
 
+
 ## Setup and Installation Requirements
 
 ### Setting up the project
@@ -46,6 +47,32 @@ This application organizes and builds a repository of Cuisine Categories, Recipe
 * In the command line, run the command `$ dotnet run` or `$ dotnet watch run` to compile and execute the application.
    * To compile the application without running it, use the following command: `$ dotnet build`.
 * Begin populating your database. Use navigational links for quick access to different pages.
+
+## Example Usage
+### Navigating the Site
+<div align="center">
+  <video width="80%" autoplay loop muted>
+    <source src="./RecipeBook/wwwroot/img/site.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+### Using the Search Bar
+<div align="center">
+  <video width="80%" autoplay loop muted>
+    <source src="./RecipeBook/wwwroot/img/search.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+### Managing Accounts
+<div align="center">
+  <video width="80%" autoplay loop muted>
+    <source src="./RecipeBook/wwwroot/img/accounts.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
 
 ## Known Bugs
 
