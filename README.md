@@ -15,7 +15,7 @@
 
 ## Description
 
-This application organizes and builds a repository of Cuisine Categories, Recipes, and their Tags, storing this information using a database. Users may create an account, log in and be assigned Admin or User roles. Registered users may create and edit their own recipes. Admin users may edit all recipes and assign/manage roles for all users. Anonymous users may read details of each category, recipe, and tag, while not having full CUD capabilities" This project follows object oriented design and object relational mapping. This is an ASP.NET Core MVC application that uses Identity.
+This application organizes and builds a repository of Cuisine Categories, Recipes, and their Tags, storing this information using a database. Users may create an account, log in and be assigned Admin or User roles. Registered users may create and edit their own recipes. Admin users may edit all recipes and assign/manage roles for all users. Anonymous users may read details of each category, recipe, and tag, while not having full CRUD capabilities. This project follows object oriented design and object relational mapping. This is an ASP.NET Core MVC application that uses Identity.
 <p align="center">
   <img src="./RecipeBook/wwwroot/img/recipebook_schema.png" alt="overview of Recipe Book" width="80%">
 </p>
