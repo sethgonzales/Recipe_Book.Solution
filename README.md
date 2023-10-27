@@ -49,36 +49,22 @@ This application organizes and builds a repository of Cuisine Categories, Recipe
 * Begin populating your database. Use navigational links for quick access to different pages.
 
 ## Example Usage
+
 ### Navigating the Site
-<div align="center">
-  <video width="80%" autoplay loop muted>
-    <source src="./RecipeBook/wwwroot/img/site.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+![Site Video](./RecipeBook/wwwroot/img/site.gif)
 
 ### Using the Search Bar
-<div align="center">
-  <video width="80%" autoplay loop muted>
-    <source src="./RecipeBook/wwwroot/img/search.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+![Search Video](./RecipeBook/wwwroot/img/search.gif)
 
 ### Managing Accounts
-<div align="center">
-  <video width="80%" autoplay loop muted>
-    <source src="./RecipeBook/wwwroot/img/accounts.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+![Accounts Video](./RecipeBook/wwwroot/img/accounts.gif)
+
 
 
 ## Known Bugs
 
 * Viewing not suited for smaller screens.
 * Animation on dropdown menu broken.
-* README videos may not play on some browsers.
 
 
 ## MIT License
