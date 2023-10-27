@@ -78,6 +78,7 @@ This application organizes and builds a repository of Cuisine Categories, Recipe
 
 * Viewing not suited for smaller screens.
 * Animation on dropdown menu broken.
+* README videos may not play on some browsers.
 
 
 ## MIT License
