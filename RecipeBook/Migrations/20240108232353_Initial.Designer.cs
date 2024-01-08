@@ -11,8 +11,8 @@ using RecipeBook.Models;
 namespace RecipeBook.Migrations
 {
     [DbContext(typeof(RecipeBookContext))]
-    [Migration("20231018212616_UpdateFunctionality")]
-    partial class UpdateFunctionality
+    [Migration("20240108232353_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -17,7 +17,7 @@
 
   @if (User.IsInRole("Admin"))
   {
-    <div class="navlinks two-links">
+    <div class="navlinks">
   <p>@Html.ActionLink("Home", "Index", "Home")</p>
       <p>@Html.ActionLink("Manage User Roles", "Index", "Role")</p>
     </div>
@@ -31,7 +31,7 @@
 }
 else
 {
-  <div class="navlinks three-links">
+  <div class="navlinks">
   <p>@Html.ActionLink("Home", "Index", "Home")</p>
     <p>@Html.ActionLink("Log in", "Login")</p>
     <p>@Html.ActionLink("Register", "Register")</p>
